@@ -11,6 +11,7 @@ ENV ASPNETCORE_URLS=http://*:5000
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["OpenShiftDemo_Business/OpenShiftDemo_Business.csproj", "OpenShiftDemo_Business/"]
+COPY ["OpenShiftDemo_Utilities/OpenShiftDemo_Utilities.csproj", "OpenShiftDemo_Utilities/"]
 RUN dotnet restore "OpenShiftDemo_Business/OpenShiftDemo_Business.csproj"
 COPY . .
 WORKDIR "/src"
