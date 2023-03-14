@@ -10,6 +10,18 @@ namespace OpenShiftDemo_Business
 
             builder.Services.AddControllers();
 
+            #region Get Configurations with.NetLogger
+
+            builder.Host.ConfigureAppConfiguration((ctx, builder) =>
+            {
+                builder.AddJsonFile("appsettings.json");
+                builder.AddJsonFile("conf/appsettings.json", optional: true, reloadOnChange: true);
+                builder.AddJsonFile("secret/secret.json", optional: true, reloadOnChange: true);
+            });
+
+            #endregion
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
