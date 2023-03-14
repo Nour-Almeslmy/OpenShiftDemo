@@ -10,11 +10,12 @@ ENV ASPNETCORE_URLS=http://*:5000
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["OpenShiftDemo_Business/OpenShiftDemo_Business.csproj", "OpenShiftDemo_Business/"]
-COPY ["OpenShiftDemo_Utilities/OpenShiftDemo_Utilities.csproj", "OpenShiftDemo_Utilities/"]
-RUN dotnet restore "OpenShiftDemo_Business/OpenShiftDemo_Business.csproj"
+COPY ["GSM/OpenShiftDemo_Business/OpenShiftDemo_Business.csproj", "GSM/OpenShiftDemo_Business/"]
+COPY ["GSM/OpenShiftDemo_Utilities/OpenShiftDemo_Utilities.csproj", "GSM/OpenShiftDemo_Utilities/"]
+COPY ["Common/OpenShiftDemo.Common.Business/OpenShiftDemo.Common.Business.csproj", "Common/OpenShiftDemo.Common.Business/"]
+RUN dotnet restore "GSM/OpenShiftDemo_Business/OpenShiftDemo_Business.csproj"
 COPY . .
-WORKDIR "/src"
+WORKDIR "/src/GSM"
 RUN dotnet build "OpenShiftDemo_Business/OpenShiftDemo_Business.csproj" -c Release -o /app/build
 
 FROM build AS publish
