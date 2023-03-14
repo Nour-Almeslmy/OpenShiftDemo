@@ -1,3 +1,5 @@
+using Serilog;
+
 namespace OpenShiftDemo_Business
 {
     public class Program
@@ -10,7 +12,7 @@ namespace OpenShiftDemo_Business
 
             builder.Services.AddControllers();
 
-            #region Get Configurations with.NetLogger
+            #region Configurations
 
             builder.Host.ConfigureAppConfiguration((ctx, builder) =>
             {
@@ -21,6 +23,19 @@ namespace OpenShiftDemo_Business
 
             #endregion
 
+            #region SeriLog
+
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("SeriLogConf.json")
+                .Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(config)
+                .CreateLogger();
+
+            builder.Host.UseSerilog();
+
+            #endregion
 
             var app = builder.Build();
 

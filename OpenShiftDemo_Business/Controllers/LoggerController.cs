@@ -22,7 +22,6 @@ namespace OpenShiftDemo_Business.Controllers
             }
             catch (Exception exp)
             {
-                _logger.LogDebug("logging EndPoint Debug");
                 _logger.LogError(exp, "Logging Endpoint Error", new object());
             }
             return $"Logging";
