@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\OpenShiftDemo.Common.Business\OpenShiftDemo.Common.Business.csproj" />
     <ProjectReference Include="..\OpenShiftDemo_Utilities\OpenShiftDemo_Utilities.csproj" />
   </ItemGroup>
 
